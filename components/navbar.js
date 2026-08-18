@@ -4,12 +4,12 @@ export function Link({ href, children }) {
   return html`
     <a
       style="
-      color: #589966; 
-      text-decoration: none; 
-      font-size: 16px;
-      font-family: Inter;
-      letter-spacing: 3%;
-    "
+        color: #589966; 
+        text-decoration: none; 
+        font-size: 16px;
+        font-family: Inter;
+        letter-spacing: 3%;
+      "
       href=${href}
       target="_blank"
     >
@@ -21,6 +21,7 @@ export function Link({ href, children }) {
 export function Navbar() {
   return html`
     <div 
+      class="desktop"
       style="
         display: flex;
         flex-direction: row;
@@ -28,6 +29,7 @@ export function Navbar() {
         align-items: baseline;
         max-width: 698px;
         margin: 28px auto; 
+        padding-inline: 24px;
       "
     >
       <span 
