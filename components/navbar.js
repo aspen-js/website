@@ -1,5 +1,9 @@
 import { html } from "aspen";
 
+import { $isMobile } from "../layout.js";
+
+export * as GitHub from "./github.js";
+
 export function Link({ href, children }) {
   return html`
     <a
@@ -19,9 +23,12 @@ export function Link({ href, children }) {
 }
 
 export function Navbar() {
+  if ($isMobile.val) {
+    return null;
+  }
+
   return html`
     <div 
-      class="desktop"
       style="
         display: flex;
         flex-direction: row;
@@ -52,15 +59,7 @@ export function Navbar() {
         <Link href="https://github.com/aspen-js/core#quick-start">Quick start</Link>
         <Link href="https://github.com/aspen-js/core#api-reference">API reference</Link>
         <Link href="https://x.com">X.com</Link>
-        <a class="github-button"
-          href="https://github.com/aspen-js/core"
-          data-color-scheme="no-preference: light; light: light; dark: dark;" 
-          data-icon="octicon-star" 
-          data-show-count="true" 
-          aria-label="Star aspen-js/core on GitHub"
-        >
-          Star
-        </a>
+        <GitHub />
       </div>
     </div>
   `;
