@@ -7,13 +7,13 @@ export * as GitHub from "./github.js";
 export function Link({ href, children }) {
   return html`
     <a
-      style="
+      style=${`
         color: #589966; 
         text-decoration: none; 
-        font-size: 16px;
+        font-size: ${$isMobile.val ? 14 : 16}px;
         font-family: Inter;
         letter-spacing: 3%;
-      "
+      `}
       href=${href}
       target="_blank"
     >
@@ -22,9 +22,47 @@ export function Link({ href, children }) {
   `;
 }
 
+export function AspenJS() {
+  return html`
+    <span
+      style=${`
+        font-family: Inter;
+        font-size: ${$isMobile.val ? 18 : 24}px;
+        letter-spacing: 3%;
+      `}
+    >
+      Aspen<span style="color: #589966">.</span>js
+    </span>
+  `;
+}
+
 export function Navbar() {
   if ($isMobile.val) {
-    return null;
+    return html`
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin: 24px 16px 32px 16px;
+        "
+      >
+        <AspenJS />
+        <GitHub />
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 24px;
+        "
+      >
+        <Link href="https://github.com/aspen-js/core#quick-start">Quick start</Link>
+        <Link href="https://github.com/aspen-js/core#api-reference">API reference</Link>
+        <Link href="https://x.com">X.com</Link>
+      </div>
+    `;
   }
 
   return html`
@@ -39,15 +77,7 @@ export function Navbar() {
         padding-inline: 24px;
       "
     >
-      <span 
-        style="
-          font-family: Inter;
-          font-size: 24px;
-          letter-spacing: 3%;
-        "
-      >
-        Aspen<span style="color: #589966">.</span>js
-      </span>
+      <AspenJS />
       <div
         style="
           display: flex; 

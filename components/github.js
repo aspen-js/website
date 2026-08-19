@@ -3,6 +3,7 @@ import { html, task } from "aspen";
 export function GitHub() {
   // TODO: Remove the script on unmount once tasks support cleanup functions
   task(() => {
+    console.log("setting up script");
     const script = document.createElement("script");
     script.src = "https://buttons.github.io/buttons.js";
     script.async = script.defer = true;
