@@ -5,7 +5,10 @@ export function ButtonLink({ children, href }) {
     <a
       href=${href}
       target="_blank"
-      style="
+      style=${`
+        position: relative;
+        top: 0px;
+        transition: top 100ms ease-in-out;
         font-family: 'Zilla Slab';
         font-size: 18px;
         color: white;
@@ -16,11 +19,23 @@ export function ButtonLink({ children, href }) {
         align-items: center;
         justify-content: center;
         gap: 32px;
-        padding-inline: 24px;
+        padding-left: 24px;
+        padding-right: 22px;
         text-decoration: none;
         letter-spacing: 5%;
-      "
+      `}
     >
+      <style>
+        @scope {
+          :scope:hover {
+            top: 3px !important;
+          }
+
+          :scope:active {
+            transform: translateY(3px);
+          }
+        }
+      </style>
       ${children}
       <span
         style="
