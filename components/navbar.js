@@ -27,7 +27,7 @@ export function AspenJS() {
     <span
       style=${`
         font-family: Inter;
-        font-size: 24px;
+        font-size: ${$isMobile.val ? 20 : 24}px;
         letter-spacing: 3%;
       `}
     >
@@ -38,12 +38,14 @@ export function AspenJS() {
 
 export function Navbar() {
   if ($isMobile.val) {
+    // TODO: Vertical alignment doesn't seem quite right
     return html`
       <div
         style="
           display: flex;
           flex-direction: row;
           justify-content: space-between;
+          align-items: center;
           margin: 24px 16px 48px 16px;
         "
       >

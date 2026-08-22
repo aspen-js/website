@@ -33,7 +33,7 @@ export function App() {
         font-size: 16px;
         letter-spacing: 3%;
         max-width: 65ch;
-        margin: 74px ${$isMobile.val ? "24px" : "auto"};
+        margin: ${$isMobile.val ? "48px 24px 48px 24px" : "74px auto 74px auto"};
         line-height: 28px;
       `}
     >
@@ -42,7 +42,9 @@ export function App() {
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip sit
       amet.
     </p>
-    <CodeSnippet filePath="/components/todo-list.js">
+    <CodeSnippet
+      filePaths=${["/components/todo-list.js", "/components/todo.js"]}
+    >
       <TodoList />
     </CodeSnippet>
   `;

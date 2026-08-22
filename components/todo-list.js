@@ -1,37 +1,17 @@
 import { html, signal } from "aspen";
 
-export function Todo({ $todo, $todos }) {
-  return html`
-    <li>
-      <input
-        type="checkbox"
-        checked=${$todo.done}
-        oninput=${(e) => ($todo.done = e.target.checked)}
-      />
-      <input
-        type="text"
-        value=${$todo.text}
-        oninput=${(e) => ($todo.text = e.target.value)}
-      />
-      <button
-        onclick=${() => {
-          $todos.val.splice(
-            $todos.val.findIndex(({ id }) => id === $todo.id),
-            1,
-          );
-        }}
-      >
-        x
-      </button>
-    </li>
-  `;
-}
+export * as Todo from "./todo.js";
+
+let renders = 0;
 
 export function TodoList() {
   const $todos = signal([
     { id: Symbol(), text: "Learn Aspen", done: true },
-    { id: Symbol(), text: "See more $", done: false },
+    { id: Symbol(), text: "See more $", done: true },
+    { id: Symbol(), text: "", done: false },
   ]);
+
+  renders++;
 
   return html`
     Todos
@@ -45,12 +25,15 @@ export function TodoList() {
     >
       +
     </button>
+    <span style="color: gray;">(${renders} renders)</span>
     <ol>
-      ${$todos.val.map(
-        (todo) => html(todo.id)`
+      ${$todos.val.length
+        ? $todos.val.map(
+            (todo) => html(todo.id)`
           <Todo $todo=${todo} $todos=${$todos} />
         `,
-      )}
+          )
+        : "No todos"}
     </ol>
   `;
 }

@@ -3,23 +3,47 @@ import { html, task } from "aspen";
 import { $isMobile } from "../layout.js";
 import { signal } from "../aspen.js";
 
-export function CodeSnippet({ filePath, children }) {
-  const $code = signal("");
+export function FileName({ active, children, onClick }) {
+  return html`
+    <span
+      onclick=${onClick}
+      style=${`
+        font-family: 'Zilla Slab';
+        font-size: 16px;
+        font-weight: 500;
+        color: ${active ? "black" : "#ABABAB"};
+        cursor: pointer;
+      `}
+    >
+      ${children}
+    </span>
+  `;
+}
+
+export function CodeSnippet({ filePaths, children }) {
+  const $files = signal([]);
+  const $index = signal(0);
 
   task(() => {
-    const path = import.meta.resolve(filePath);
-
-    fetch(path).then(async (res) => {
-      const text = await res.text();
-
-      $code.val = text;
-      hljs.highlightAll();
-    });
+    Promise.all(
+      filePaths.map((filePath) =>
+        fetch(import.meta.resolve(filePath)).then((res) => res.text()),
+      ),
+    ).then((files) => ($files.val = files));
   });
 
-  if (!$code.val) {
-    return null;
-  }
+  task(() => {
+    if ($files.val.length) {
+      const file = $files.val[$index.val];
+
+      console.log("highlighting...");
+      const highlighted = hljs.highlight(file, {
+        language: "javascript",
+      }).value;
+
+      document.getElementById("code").innerHTML = highlighted;
+    }
+  });
 
   return html`
     <div
@@ -29,29 +53,60 @@ export function CodeSnippet({ filePath, children }) {
         border: 1px solid #B3B3B3;
         box-shadow: 4px 4px 0px #B3B3B3;
         border-radius: 3px;
-        display: flex;
-        flex-direction: ${$isMobile.val ? "column" : "row"};
-        align-items: stretch;
-      `}
+             `}
     >
-      <pre
+      <div
         style="
-          padding: 0; 
-          margin: 0; 
-          overflow-x: scroll;
+          height: 32px;
+          border-bottom: 1px solid #B3B3B3;
+          display: flex;
+          gap: 24px;
+          align-items: center;
+          justify-content: flex-start;
+          padding-left: 12px;
         "
-      ><code style="border-radius: 3px; background-color: transparent; white-space: pre;">${$code.val}</code></pre>
+      >
+        ${filePaths.map(
+          (filePath, i) => html(filePath)`
+            <FileName active=${i === $index.val} onClick=${() => ($index.val = i)}>
+              ${filePath.split("/").at(-1)}
+            </FileName>
+          `,
+        )}
+      </div>
       <div
         style=${`
+          display: flex;
+          flex-direction: ${$isMobile.val ? "column" : "row"};
+          align-items: stretch;
+        `}
+      >
+        <pre
+          style="
+            padding: 0; 
+            margin: 0; 
+            overflow-x: scroll;
+          "
+        ><code
+          id="code"
+          style="
+            border-radius: 3px;
+            background-color: transparent;
+          "
+        ></code></pre>
+        <div
+          style=${`
           background-color: #F9F9F9;
           padding: 12px;
           flex: 1;
+          min-height: 348px;
           border-radius: ${
             $isMobile.val ? "0px 0px 3px 3px" : "0px 3px 3px 0px"
           };
         `}
-      >
-        ${children}
+        >
+          ${children}
+        </div>
       </div>
     </div>
   `;
