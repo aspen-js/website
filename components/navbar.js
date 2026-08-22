@@ -10,7 +10,7 @@ export function Link({ href, children }) {
       style=${`
         color: #589966; 
         text-decoration: none; 
-        font-size: ${$isMobile.val ? 14 : 16}px;
+        font-size: 16px;
         font-family: Inter;
         letter-spacing: 3%;
       `}
@@ -27,7 +27,7 @@ export function AspenJS() {
     <span
       style=${`
         font-family: Inter;
-        font-size: ${$isMobile.val ? 18 : 24}px;
+        font-size: 24px;
         letter-spacing: 3%;
       `}
     >
@@ -44,7 +44,7 @@ export function Navbar() {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          margin: 24px 16px 32px 16px;
+          margin: 24px 16px 48px 16px;
         "
       >
         <AspenJS />

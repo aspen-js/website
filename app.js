@@ -25,5 +25,20 @@ export function App() {
         Read the docs
       </ButtonLink>
     </div>
+    <p
+      style=${`
+        font-family: Roboto;
+        font-size: 16px;
+        letter-spacing: 3%;
+        max-width: 65ch;
+        margin: 74px ${$isMobile.val ? "24px" : "auto"};
+        line-height: 28px;
+      `}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip sit
+      amet.
+    </p>
   `;
 }
