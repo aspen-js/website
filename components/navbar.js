@@ -72,7 +72,7 @@ export function Navbar() {
         flex-direction: row;
         justify-content: space-between;
         align-items: baseline;
-        max-width: 698px;
+        max-width: 896px;
         margin: 28px auto; 
         padding-inline: 24px;
       "

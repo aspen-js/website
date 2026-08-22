@@ -5,6 +5,8 @@ import { $isMobile } from "./layout.js";
 export * as Navbar from "./components/navbar.js";
 export * as AspenLogo from "./components/aspen-logo.js";
 export * as ButtonLink from "./components/button-link.js";
+export * as CodeSnippet from "./components/code-snippet.js";
+export * as TodoList from "./components/todo-list.js";
 
 export function App() {
   return html`
@@ -40,5 +42,8 @@ export function App() {
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip sit
       amet.
     </p>
+    <CodeSnippet filePath="/components/todo-list.js">
+      <TodoList />
+    </CodeSnippet>
   `;
 }
