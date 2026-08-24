@@ -35,8 +35,6 @@ export function CodeSnippet({ filePaths, children }) {
   task(() => {
     if ($files.val.length) {
       const file = $files.val[$index.val];
-
-      console.log("highlighting...");
       const highlighted = hljs.highlight(file, {
         language: "javascript",
       }).value;
@@ -47,16 +45,21 @@ export function CodeSnippet({ filePaths, children }) {
 
   return html`
     <div
-      style=${`
+      style="
+        padding-inline: 24px;
         max-width: 896px;
-        margin-inline: ${$isMobile.val ? "24px" : "auto"};
-        border: 1px solid #B3B3B3;
-        box-shadow: 4px 4px 0px #B3B3B3;
-        border-radius: 3px;
-             `}
+        margin: auto;
+      "
     >
       <div
         style="
+          border: 1px solid #B3B3B3;
+          box-shadow: 4px 4px 0px #B3B3B3;
+          border-radius: 3px;
+        "
+      >
+        <div
+          style="
           height: 32px;
           border-bottom: 1px solid #B3B3B3;
           display: flex;
@@ -65,47 +68,48 @@ export function CodeSnippet({ filePaths, children }) {
           justify-content: flex-start;
           padding-left: 12px;
         "
-      >
-        ${filePaths.map(
-          (filePath, i) => html(filePath)`
+        >
+          ${filePaths.map(
+            (filePath, i) => html(filePath)`
             <FileName active=${i === $index.val} onClick=${() => ($index.val = i)}>
               ${filePath.split("/").at(-1)}
             </FileName>
           `,
-        )}
-      </div>
-      <div
-        style=${`
+          )}
+        </div>
+        <div
+          style=${`
           display: flex;
           flex-direction: ${$isMobile.val ? "column" : "row"};
           align-items: stretch;
         `}
-      >
-        <pre
-          style="
+        >
+          <pre
+            style="
             padding: 0; 
             margin: 0; 
             overflow-x: scroll;
           "
-        ><code
+          ><code
           id="code"
           style="
             border-radius: 3px;
             background-color: transparent;
           "
         ></code></pre>
-        <div
-          style=${`
-          background-color: #F9F9F9;
-          padding: 12px;
-          flex: 1;
-          min-height: 348px;
-          border-radius: ${
-            $isMobile.val ? "0px 0px 3px 3px" : "0px 3px 3px 0px"
-          };
-        `}
-        >
-          ${children}
+          <div
+            style=${`
+            background-color: #F9F9F9;
+            padding: 12px;
+            flex: 1;
+            min-height: 348px;
+            border-radius: ${
+              $isMobile.val ? "0px 0px 3px 3px" : "0px 3px 3px 0px"
+            };
+          `}
+          >
+            ${children}
+          </div>
         </div>
       </div>
     </div>

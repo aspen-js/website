@@ -7,6 +7,7 @@ export * as AspenLogo from "./components/aspen-logo.js";
 export * as ButtonLink from "./components/button-link.js";
 export * as CodeSnippet from "./components/code-snippet.js";
 export * as TodoList from "./components/todo-list.js";
+export * as SiteFooter from "./components/site-footer.js";
 
 export function App() {
   return html`
@@ -33,7 +34,8 @@ export function App() {
         font-size: 16px;
         letter-spacing: 3%;
         max-width: 65ch;
-        margin: ${$isMobile.val ? "48px 24px 48px 24px" : "74px auto 74px auto"};
+        margin: ${$isMobile.val ? "48px 24px" : "74px auto"};
+        text-align: ${$isMobile.val ? "unset" : "center"};
         line-height: 28px;
       `}
     >
@@ -47,5 +49,6 @@ export function App() {
     >
       <TodoList />
     </CodeSnippet>
+    <SiteFooter />
   `;
 }
