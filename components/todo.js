@@ -1,11 +1,6 @@
 import { html } from "aspen";
 
-let renders = {};
-
 export function Todo({ $todo, $todos }) {
-  renders[$todo.id] ||= 0;
-  renders[$todo.id]++;
-
   return html`
     <li>
       <input
@@ -28,8 +23,7 @@ export function Todo({ $todo, $todos }) {
       >
         x
       </button>
-      <div style="color: gray;">(${renders[$todo.id]} renders)</div>
-      <br />
     </li>
+    <br />
   `;
 }
