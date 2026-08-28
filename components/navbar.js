@@ -90,7 +90,7 @@ export function Navbar() {
       >
         <Link href="https://github.com/aspen-js/core#quick-start">Quick start</Link>
         <Link href="https://github.com/aspen-js/core#api-reference">API reference</Link>
-        <Link href="https://x.com">X.com</Link>
+        <Link href="https://x.com/Jack_nZQn6JF">X.com</Link>
         <GitHub />
       </div>
     </div>
