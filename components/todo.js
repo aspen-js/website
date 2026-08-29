@@ -10,6 +10,7 @@ export function Todo({ $todo, $todos }) {
       />
       <input
         type="text"
+        style="max-width: 100%;"
         value=${$todo.text}
         oninput=${(e) => ($todo.text = e.target.value)}
       />

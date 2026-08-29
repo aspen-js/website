@@ -90,7 +90,7 @@ export function CodeSnippet({ filePaths, children }) {
                 margin: 0; 
                 overflow-x: scroll;
               "
-            ><code id="code" style="background-color: transparent;"></code></pre>
+            ><code id="code" ></code></pre>
           </div>
           <div
             style=${`
@@ -98,6 +98,7 @@ export function CodeSnippet({ filePaths, children }) {
               padding: 12px;
               flex: 1;
               min-height: 348px;
+              min-width: 0;
               border-radius: ${
                 $isMobile.val ? "0px 0px 3px 3px" : "0px 3px 3px 0px"
               };
