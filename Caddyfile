@@ -7,12 +7,20 @@ http://localhost:3000 {
 			path_regexp ^([^.]+)\.[^/.]+\.([^/.]+)$
 		}
 		handle @fingerprinted {
-			header test-header "hello world"
 			header Cache-Control "max-age=31536000, immutable"
 
 			try_files {path} {re.1}.{re.2}
 
 			file_server
+		}
+
+		# Cache font files forever. If they change they should be called something
+		# different
+		@font {
+			path_regexp .woff2$
+		}
+		handle @font {
+			header Cache-Control "max-age=31536000, immutable"
 		}
 
 		try_files {path}
@@ -22,8 +30,8 @@ http://localhost:3000 {
 
 	redir /index.html /
 
-	# Dynamically generate and insert an importmap of bare to fingerprinted file
-	# names and a list of modulepreload link tags
+	# Serve index.html and dynamically generate and insert an importmap of bare
+	# to fingerprinted file names and a list of modulepreload link tags
 	handle / {
 		header Content-Type text/html
 		header Cache-Control "max-age=0, must-revalidate"
@@ -73,9 +81,11 @@ http://localhost:3000 {
     <link rel="modulepreload" href="/{{ trimSuffix ".js" . }}.{{ get $visitedPaths . }}.js" />
     {{- end -}}
     {{- range (listFiles "/static") }}
-    {{- if (hasSuffix ".css" .) -}}
+      {{- if (hasSuffix ".css" .) -}}
       <link rel="stylesheet" href="/static/{{ trimSuffix ".css" . }}.{{ sha1sum (readFile (printf "static/%s" . )) }}.css" />
-    {{- end -}}
+      {{- else if (hasSuffix ".woff2" .) -}}
+      <link rel="preload" href="/static/{{ . }}" as="font" type="font/woff2" crossorigin />
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}`

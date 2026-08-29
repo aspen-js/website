@@ -25,8 +25,8 @@ export function TodoList() {
       ${$todos.val.length
         ? $todos.val.map(
             (todo) => html(todo.id)`
-          <Todo $todo=${todo} $todos=${$todos} />
-        `,
+              <Todo $todo=${todo} $todos=${$todos} />
+            `,
           )
         : "No todos"}
     </ol>

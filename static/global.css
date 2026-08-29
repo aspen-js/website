@@ -3,3 +3,50 @@ body {
   padding: 0;
   margin: 0;
 }
+
+/* Inter */
+
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./inter-v20-latin-regular.woff2") format("woff2");
+}
+
+/* Roboto */
+
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./roboto-v51-latin-regular.woff2") format("woff2");
+}
+
+/* Zilla Slab */
+
+@font-face {
+  font-display: swap;
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./zilla-slab-v12-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./zilla-slab-v12-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./zilla-slab-v12-arrow-right.woff2") format("woff2");
+  unicode-range: U+2192;
+}
