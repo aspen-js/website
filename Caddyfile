@@ -62,7 +62,7 @@ http://localhost:3000 {
     <script type="importmap">
       {
         "imports": {
-           "aspen": "/aspen.{{ (sha1sum (readFile "/aspen.js" )) }}.js",
+           "aspen": "/vendor/aspen.{{ (sha1sum (readFile "/vendor/aspen.js" )) }}.js",
           {{- range $index, $key := $keys }}
           "/{{ . }}": "/{{trimSuffix ".js" $key}}.{{ get $visitedPaths $key }}.js"{{ if ne $index (sub (len $keys) 1) }},{{ end }}
           {{- end }}
@@ -71,6 +71,11 @@ http://localhost:3000 {
     </script>
     {{- range $keys }}
     <link rel="modulepreload" href="/{{ trimSuffix ".js" . }}.{{ get $visitedPaths . }}.js" />
+    {{- end -}}
+    {{- range (listFiles "/static") }}
+    {{- if (hasSuffix ".css" .) -}}
+      <link rel="stylesheet" href="/static/{{ trimSuffix ".css" . }}.{{ sha1sum (readFile (printf "static/%s" . )) }}.css" />
+    {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}`
