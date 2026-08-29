@@ -58,7 +58,7 @@ export function SiteFooter() {
           <FooterLink href="https://github.com/aspen-js/core#api-reference">
             API reference
           </FooterLink>
-          <FooterLink href="https://x.com/Jack_nZQn6JF">X.com</FooterLink>
+          <FooterLink href="https://x.com/aspenjs_dev">X.com</FooterLink>
         </FooterColumn>
         <FooterColumn>
           <FooterLink href="https://github.com/aspen-js/core">

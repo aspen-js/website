@@ -38,7 +38,6 @@ export function AspenJS() {
 
 export function Navbar() {
   if ($isMobile.val) {
-    // TODO: Vertical alignment doesn't seem quite right
     return html`
       <div
         style="
@@ -62,7 +61,7 @@ export function Navbar() {
       >
         <Link href="https://github.com/aspen-js/core#quick-start">Quick start</Link>
         <Link href="https://github.com/aspen-js/core#api-reference">API reference</Link>
-        <Link href="https://x.com">X.com</Link>
+        <Link href="https://x.com/aspenjs_dev">X.com</Link>
       </div>
     `;
   }
@@ -90,7 +89,7 @@ export function Navbar() {
       >
         <Link href="https://github.com/aspen-js/core#quick-start">Quick start</Link>
         <Link href="https://github.com/aspen-js/core#api-reference">API reference</Link>
-        <Link href="https://x.com/Jack_nZQn6JF">X.com</Link>
+        <Link href="https://x.com/aspenjs_dev">X.com</Link>
         <GitHub />
       </div>
     </div>
