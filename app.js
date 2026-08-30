@@ -34,15 +34,15 @@ export function App() {
         font-size: 16px;
         letter-spacing: 3%;
         max-width: 65ch;
+        color: #535353;
         margin: ${$isMobile.val ? "48px 24px" : "74px auto"};
-        text-align: ${$isMobile.val ? "unset" : "center"};
+        text-align: center;
         line-height: 28px;
       `}
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip sit
-      amet.
+      Aspen aims to simplify your fronted with a) synchronous state updates
+      powered by deeply reactive signal objects and b) a component model that
+      allows JSX-like syntax without a build step.
     </p>
     <CodeSnippet
       filePaths=${["/components/todo-list.js", "/components/todo.js"]}

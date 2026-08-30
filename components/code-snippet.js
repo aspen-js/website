@@ -10,7 +10,7 @@ export function FileName({ active, children, onClick }) {
         font-family: 'Zilla Slab';
         font-size: 16px;
         font-weight: 500;
-        color: ${active ? "black" : "#ABABAB"};
+        color: ${active ? "#535353" : "#ABABAB"};
         cursor: pointer;
       `}
     >
