@@ -19,13 +19,13 @@ export function FileName({ active, children, onClick }) {
   `;
 }
 
-export function CodeSnippet({ filePaths, children }) {
+export function CodeSnippet({ $filePaths, children }) {
   const $files = signal([]);
   const $index = signal(0);
 
   task(() => {
     Promise.all(
-      filePaths.map((filePath) =>
+      $filePaths.val.map((filePath) =>
         fetch(import.meta.resolve(filePath)).then((res) => res.text()),
       ),
     ).then((files) => ($files.val = files));
@@ -68,7 +68,7 @@ export function CodeSnippet({ filePaths, children }) {
           padding-left: 12px;
         "
         >
-          ${filePaths.map(
+          ${$filePaths.val.map(
             (filePath, i) => html(filePath)`
             <FileName active=${i === $index.val} onClick=${() => ($index.val = i)}>
               ${filePath.split("/").at(-1)}

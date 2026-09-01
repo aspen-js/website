@@ -5,7 +5,7 @@ export function ButtonLink({ children, href }) {
     <a
       href=${href}
       target="_blank"
-      style=${`
+      style="
         position: relative;
         top: 0px;
         transition: top 100ms ease-in-out;
@@ -23,7 +23,7 @@ export function ButtonLink({ children, href }) {
         padding-right: 22px;
         text-decoration: none;
         letter-spacing: 5%;
-      `}
+      "
     >
       <style>
         @scope {
