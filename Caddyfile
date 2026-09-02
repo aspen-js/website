@@ -1,4 +1,4 @@
-http://localhost:3000 {
+:3000 {
 	# Serve static assets
 	route * {
 		# Handle paths like /app.ff282437ea9a6dafd8286c6f04bc2d8c25bf3e27.js by
