@@ -1,4 +1,4 @@
-import { html, signal } from "aspen";
+import { html } from "aspen";
 
 import { $isMobile } from "./layout.js";
 
@@ -45,7 +45,7 @@ export function App() {
       allows JSX-like syntax without a build step.
     </p>
     <CodeSnippet
-      $filePaths=${signal(["/components/todo-list.js", "/components/todo.js"])}
+      filePaths=${["/components/todo-list.js", "/components/todo.js"]}
     >
       <TodoList />
     </CodeSnippet>

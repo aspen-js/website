@@ -19,9 +19,12 @@ export function FileName({ active, children, onClick }) {
   `;
 }
 
-export function CodeSnippet({ $filePaths, children }) {
+export function CodeSnippet({ filePaths, children }) {
   const $files = signal([]);
   const $index = signal(0);
+
+  // Tasks are not allowed to reference non-signal values from other scopes
+  const $filePaths = signal(filePaths);
 
   task(() => {
     Promise.all(
