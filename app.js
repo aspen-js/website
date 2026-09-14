@@ -40,7 +40,7 @@ export function App() {
         line-height: 28px;
       `}
     >
-      Aspen aims to simplify your fronted with a) synchronous state updates
+      Aspen aims to simplify your frontend with a) synchronous state updates
       powered by deeply reactive signal objects and b) a component model that
       allows JSX-like syntax without a build step.
     </p>
